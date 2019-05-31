@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Budget App - by Jeremy Zevin</title>
+</head>
+
+<body>
+    <div class="ba debug flex flex-fdc">
+        <div class="ba__top col flex flex-fdc">
+            <header class="ba__top__header col flex flex-jcc flex-aic">
+                <div class="col">
+                    <div class="ba__top__header_text">Budget App</div>
+                </div>
+                <div class="col">
+                    <div class="ba__top__header_text flex-jce">September 2019</div>
+                </div>
+            </header>
+            <section class="ba__top__total col flex flex-jcc flex-aic">
+                <div class="ba__top__total_text">+1,234,567.79</div>
+            </section>
+            <section class="ba__top__summary col">
+                <div class="ba__top__summary__income">
+                    <div class="ba__top__summary__income__text flex">
+                        <div class="ba__top__summary__income__text_title col">
+                            <div>income</div>
+                        </div>
+                        <div class="ba__top__summary__income__text_value col">
+                            <div>+24,234.00</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ba__top__summary__expense">
+                    <div class="ba__op__summary__income__text flex">
+                        <div class="ba__top__summary__income__text_title col">
+                            <div>expense</div>
+                        </div>
+                        <div class="ba__top__summary__income__text_value col">
+                            <div>-4,234.00</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <form class="ba__top__form flex">
+                <div class="col">
+                    <select name="type" class="ba__top__form_type">
+                        <option value="income">+</option>
+                        <option value="expense">-</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <input type="text" name="description" class="ba__top__form_description">
+                </div>
+                <div class="col">
+                    <input type="text" name="amount" class="ba__top__form_amount">
+                </div>
+                <div class="col">
+                    <button type="submit">add</button>
+                </div>
+            </form>
+        </div>
+        <div class="bottom col flex flex-dc">
+            bottom
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
