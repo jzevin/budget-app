@@ -109,7 +109,8 @@ body, html {
 }
 
 .ba__bottom {
-    overflow-y: auto;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     height: calc(100% - 330px);
 }
 
