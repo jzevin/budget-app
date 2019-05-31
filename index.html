@@ -5,66 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
     <title>Budget App - by Jeremy Zevin</title>
 </head>
 
 <body>
-    <div class="ba debug flex flex-fdc">
+    <div class="ba debug flex flex-fdc h-100">
         <div class="ba__top col flex flex-fdc">
             <header class="ba__top__header col flex flex-jcc flex-aic">
                 <div class="col">
                     <div class="ba__top__header_text">Budget App</div>
                 </div>
                 <div class="col">
-                    <div class="ba__top__header_text flex-jce">September 2019</div>
+                    <div class="ba__top__header_text flex flex-jce">xxxxxx 0000</div>
                 </div>
             </header>
             <section class="ba__top__total col flex flex-jcc flex-aic">
-                <div class="ba__top__total_text">+1,234,567.79</div>
+                <div class="ba__top__total_text">+0.00</div>
             </section>
-            <section class="ba__top__summary col">
-                <div class="ba__top__summary__income">
-                    <div class="ba__top__summary__income__text flex">
-                        <div class="ba__top__summary__income__text_title col">
+            <section class="ba__top__summary col flex flex-fww">
+                <div class="ba__top__summary__income col-100 flex flex-jcc flex-aife">
+                    <div class="ba__top__summary__income__text flex col-75">
+                        <div class="ba__top__summary__income__text_title col-50">
                             <div>income</div>
                         </div>
-                        <div class="ba__top__summary__income__text_value col">
-                            <div>+24,234.00</div>
+                        <div class="ba__top__summary__income__text_value col-50 flex flex-jce">
+                            <div>+0.00</div>
                         </div>
                     </div>
                 </div>
-                <div class="ba__top__summary__expense">
-                    <div class="ba__op__summary__income__text flex">
-                        <div class="ba__top__summary__income__text_title col">
+                <div class="ba__top__summary__expense col-100 flex flex-jcc flex-aifs">
+                    <div class="ba__op__summary__income__text flex col-75">
+                        <div class="ba__top__summary__income__text_title col-50">
                             <div>expense</div>
                         </div>
-                        <div class="ba__top__summary__income__text_value col">
-                            <div>-4,234.00</div>
+                        <div class="ba__top__summary__income__text_value col-50 flex flex-jce">
+                            <div>-0.00</div>
                         </div>
                     </div>
                 </div>
             </section>
-            <form class="ba__top__form flex">
-                <div class="col">
-                    <select name="type" class="ba__top__form_type">
-                        <option value="income">+</option>
-                        <option value="expense">-</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <input type="text" name="description" class="ba__top__form_description">
-                </div>
-                <div class="col">
-                    <input type="text" name="amount" class="ba__top__form_amount">
-                </div>
-                <div class="col">
-                    <button type="submit">add</button>
+            <form class="ba__top__form flex flex-jcc flex-aic">
+                <div class="ba__top__form_wrap flex">
+                    <div class="col h-100">
+                        <select name="type" class="ba__top__form_type h-100">
+                            <option value="income">+</option>
+                            <option value="expense">-</option>
+                        </select>
+                    </div>
+                    <div class="col h-100">
+                        <input type="text" name="description" class="ba__top__form_description h-100" placeholder="description">
+                    </div>
+                    <div class="col h-100">
+                        <input type="number" min="0" step="1" name="amount" class="ba__top__form_amount h-100" placeholder="0.00">
+                    </div>
+                    <div class="col h-100">
+                        <button class="h-100" type="submit" class="ba__top__form_submit h-100">add</button>
+                    </div>
                 </div>
             </form>
         </div>
-        <div class="bottom col flex flex-dc">
-            bottom
+        <div class="ba__bottom col flex flex-fdc h-100">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci perspiciatis error esse impedit necessitatibus dolor natus nisi odio quos minus provident ab laudantium officiis libero quod id facere sed, iure omnis maxime unde accusamus dolorum cum magnam! Natus suscipit commodi nisi deserunt temporibus numquam quisquam, ducimus eius nostrum error sed ex delectus ipsum, incidunt asperiores consequuntur similique, odio veniam. Adipisci saepe sed corrupti. Error, nulla doloremque iure ipsam accusamus eligendi autem, culpa quisquam, aut odit possimus numquam animi saepe recusandae ea sit rerum doloribus reprehenderit minus. Totam corporis maxime ad excepturi necessitatibus doloremque, non porro praesentium rem voluptate ab odio officia maiores est enim, dolores optio autem dignissimos doloribus consectetur dolor illum?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci perspiciatis error esse impedit necessitatibus dolor natus nisi odio quos minus provident ab laudantium officiis libero quod id facere sed, iure omnis maxime unde accusamus dolorum cum magnam! Natus suscipit commodi nisi deserunt temporibus numquam quisquam, ducimus eius nostrum error sed ex delectus ipsum, incidunt asperiores consequuntur similique, odio veniam. Adipisci saepe sed corrupti. Error, nulla doloremque iure ipsam accusamus eligendi autem, culpa quisquam, aut odit possimus numquam animi saepe recusandae ea sit rerum doloribus reprehenderit minus. Totam corporis maxime ad excepturi necessitatibus doloremque, non porro praesentium rem voluptate ab odio officia maiores est enim, dolores optio autem dignissimos doloribus consectetur dolor illum?</p>
         </div>
     </div>
     <script src="app.js"></script>
