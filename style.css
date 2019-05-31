@@ -1,0 +1,55 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+}
+.flex-fdc {
+    flex-direction: column;
+}
+.flex-jcc {
+    justify-content: center;
+}
+.flex-jce {
+    justify-content: flex-end;
+}
+.flex-aic {
+    align-items: center;
+}
+.col {
+    flex-grow: 1;
+    flex-shrink: 0;
+    max-width: 100%;
+}
+.ba.debug * {
+    outline: 1px solid darkorange;
+}
+
+.ba {
+    /* margin: 0 auto; */
+}
+
+.ba__top {
+    height: 330px;
+    background-color: #ccc;
+}
+.ba__top__header {
+    flex: 0 0 40px;
+}
+.ba__top__total {
+    flex: 0 0 135px;
+}
+.ba__top__summary {
+    flex: 0 0 65px;
+}
+.ba__top__form {
+    flex: 0 0 90px;
+}
