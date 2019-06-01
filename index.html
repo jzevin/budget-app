@@ -15,10 +15,10 @@
         <div class="ba__top col flex flex-fdc">
             <header class="ba__top__header col flex flex-jcc flex-aic">
                 <div class="col">
-                    <div class="ba__top__header_text">Budget App</div>
+                    <div class="ba__top__header_title">Budget App</div>
                 </div>
                 <div class="col">
-                    <div class="ba__top__header_text flex flex-jce">xxxxxx 0000</div>
+                    <div class="ba__top__header_date flex flex-jce">xxxxxx 0000</div>
                 </div>
             </header>
             <section class="ba__top__total col flex flex-jcc flex-aic">
@@ -30,18 +30,20 @@
                         <div class="ba__top__summary__income__text_title col-50">
                             <div>income</div>
                         </div>
-                        <div class="ba__top__summary__income__text_value col-50 flex flex-jce">
-                            <div>+0.00</div>
+                        <div class="col-50 flex flex-jce">
+                            <div class="ba__top__summary__income__text_value">+0.00</div>
+                            <div class="ba__top__summary__income__text_percentage">100%</div>
                         </div>
                     </div>
                 </div>
                 <div class="ba__top__summary__expense col-100 flex flex-jcc flex-aifs">
-                    <div class="ba__op__summary__income__text flex col-75">
-                        <div class="ba__top__summary__income__text_title col-50">
+                    <div class="ba__op__summary__expense__text flex col-75">
+                        <div class="ba__top__summary__expense__text_title col-50">
                             <div>expense</div>
                         </div>
-                        <div class="ba__top__summary__income__text_value col-50 flex flex-jce">
-                            <div>-0.00</div>
+                        <div class="col-50 flex flex-jce">
+                            <div class="ba__top__summary__expense__text_value">+0.00</div>
+                            <div class="ba__top__summary__expense__text_percentage">100%</div>
                         </div>
                     </div>
                 </div>
@@ -58,17 +60,28 @@
                         <input type="text" name="description" class="ba__top__form_description h-100" placeholder="description">
                     </div>
                     <div class="col h-100">
-                        <input type="number" min="0" step="1" name="amount" class="ba__top__form_amount h-100" placeholder="0.00">
+                        <input type="number" min="0" step="0.01" name="amount" class="ba__top__form_amount h-100" placeholder="0.00">
                     </div>
                     <div class="col h-100">
-                        <button class="h-100" type="submit" class="ba__top__form_submit h-100">add</button>
+                        <button type="submit" class="ba__top__form_submit h-100">add</button>
                     </div>
                 </div>
             </form>
+            <div class="tabs col-100 flex">
+                    <div class="tabs_tab col flex flex-jcc flex-aic active" id="tab-income">
+                        <div>Income</div>
+                    </div>
+                    <div class="tabs_tab col flex flex-jcc flex-aic" id="tab-expense">
+                        <div>Expenses</div>
+                    </div>
+                    <div class="tabs_tab col flex flex-jcc flex-aic" id="tab-both">
+                        <div>Both</div>
+                    </div>
+                </div>
         </div>
-        <div class="ba__bottom col flex flex-fdc h-100">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci perspiciatis error esse impedit necessitatibus dolor natus nisi odio quos minus provident ab laudantium officiis libero quod id facere sed, iure omnis maxime unde accusamus dolorum cum magnam! Natus suscipit commodi nisi deserunt temporibus numquam quisquam, ducimus eius nostrum error sed ex delectus ipsum, incidunt asperiores consequuntur similique, odio veniam. Adipisci saepe sed corrupti. Error, nulla doloremque iure ipsam accusamus eligendi autem, culpa quisquam, aut odit possimus numquam animi saepe recusandae ea sit rerum doloribus reprehenderit minus. Totam corporis maxime ad excepturi necessitatibus doloremque, non porro praesentium rem voluptate ab odio officia maiores est enim, dolores optio autem dignissimos doloribus consectetur dolor illum?</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci perspiciatis error esse impedit necessitatibus dolor natus nisi odio quos minus provident ab laudantium officiis libero quod id facere sed, iure omnis maxime unde accusamus dolorum cum magnam! Natus suscipit commodi nisi deserunt temporibus numquam quisquam, ducimus eius nostrum error sed ex delectus ipsum, incidunt asperiores consequuntur similique, odio veniam. Adipisci saepe sed corrupti. Error, nulla doloremque iure ipsam accusamus eligendi autem, culpa quisquam, aut odit possimus numquam animi saepe recusandae ea sit rerum doloribus reprehenderit minus. Totam corporis maxime ad excepturi necessitatibus doloremque, non porro praesentium rem voluptate ab odio officia maiores est enim, dolores optio autem dignissimos doloribus consectetur dolor illum?</p>
+        <div class="ba__bottom flex flex-fww ba__bottom--both">
+            <div class="list--income col"></div>
+            <div class="list--expense col"></div>
         </div>
     </div>
     <script src="app.js"></script>

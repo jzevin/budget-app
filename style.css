@@ -52,16 +52,23 @@ body, html {
 
 /* app */
 .ba.debug * {
-    outline: 1px solid rgba(255, 152, 0, 0.25);;
+    /* outline: 1px solid rgba(255, 152, 0, 0.25);; */
 }
 
 .ba {
     /* margin: 0 auto; */
 }
 .ba__top {
-    height: 330px;
+    height: 370px;
+    max-height: 370px;
     background-color: #ccc;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.35);
+}
+.col--percentage {
+    max-width: 3.0em;
+}
+.list__item {
+    padding: 0.5em;
 }
 
 
@@ -107,12 +114,69 @@ body, html {
 .ba__top__form_submit {
     width: 100%;
 }
+/* tabs */
+.tabs {
+    height: 40px;
+    max-height: 40px;
+    background-color: white;
+    cursor: pointer;
+}
+.tabs_tab {
+    border-bottom: 1px solid #333;
+}
+.tabs_tab.active {
+    border-bottom: 3px solid #333;
+}
+.tabs_tab:hover {
+    background-color: #efefef;
+}
 
+/* bottom */
 .ba__bottom {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     height: calc(100% - 330px);
 }
+
+.ba__bottom .list__item--income,
+.ba__bottom .list__item--expense {
+    display: flex;
+}
+.ba__bottom .list--income,
+.ba__bottom .list--expense{
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+/* lists */
+/* both */
+.ba__bottom--both .list__item--income,
+.ba__bottom--both .list__item--expense {
+    max-width: calc(100% - 0.5em);
+    flex-direction: column;
+}
+.ba__bottom--both .list__item--income .col,
+.ba__bottom--both .list__item--expense .col{
+    display: flex;
+}
+.ba__bottom--both .col--description {
+    justify-content: flex-end;
+}
+
+/* singles */
+.ba__bottom.ba__bottom--income .list--income,
+.ba__bottom.ba__bottom--expense .list--expense{
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.ba__bottom--income .list--expense {
+    display: none;
+}
+.ba__bottom--expense .list--income {
+    display: none;
+}
+
+
 
 @media only screen and (max-width: 560px) {
     .ba__top__form_wrap {
