@@ -181,12 +181,19 @@ const budgetApp = (()=>{
             items.expense.forEach(item=>updatePercentage(item, totals.expense()));
         }
 
+        function setDate() {
+            const d = new Date();
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'October', 'November', 'December'];
+            elements.header.date.textContent = `${months[d.getMonth()]} ${d.getFullYear()}`
+        }
+
         return {
             addItem,
             removeItem,
             updateTotals,
             updateAllPercentages,
-            elements
+            elements,
+            setDate
         }
     })();
     
@@ -208,6 +215,8 @@ const budgetApp = (()=>{
             }
             // init tabs
             view.elements.tabs.income.click();
+            // date
+            view.setDate()
         }
 
         function onAddItem(e) {
