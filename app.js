@@ -1,5 +1,21 @@
 const budgetApp = (()=>{
 
+    const utils = {
+        formatNumber: (num) => {
+            const out = num.toFixed(2);
+            if(Math.abs(num)<1000) {
+                return `${out}`;
+            }
+            let [dollars, cents] = out.split('.');
+            dollars = dollars.split('').reverse().reduceRight((p,c,i,a)=>{
+                let out = c;
+                    if(i>0 && i%3===0) out += ',';
+                    return p += out;
+                },'');
+            return `${dollars}.${cents}`;
+        }
+    }
+
     const $ = document.querySelector.bind(document);
     const $$ = document.querySelectorAll.bind(document);
 
@@ -9,6 +25,11 @@ const budgetApp = (()=>{
             items: {
                 income: [],
                 expense: []
+            },
+            totals: {
+                income: () => data.items.income.reduce((p,c,i,a)=>p+=c.amount,0),
+                expense: () => -data.items.expense.reduce((p,c,i,a)=>p+=c.amount,0),
+                total: () => data.totals.income() + data.totals.expense()
             }
         }
 
@@ -16,6 +37,11 @@ const budgetApp = (()=>{
         Object.defineProperty(BudgetItem.prototype, 'type', {
             get() {
                 return this instanceof Income ? 'income' : this instanceof Expense ? 'expense' : undefined;
+            }
+        });
+        Object.defineProperty(BudgetItem.prototype, 'prefix', {
+            get() {
+                return this instanceof Income ? '+' : this instanceof Expense ? '-' : undefined;
             }
         });
         Object.prototype.getId = function() {
@@ -50,9 +76,9 @@ const budgetApp = (()=>{
                 const newIncome = new Income(item);
                 data.items.income.push(newIncome);
                 return newIncome;
-            } else {
+            } else if(item.type === 'expense') {
                 const newExpense = new Expense(item);
-                data.items.expense.push();
+                data.items.expense.push(newExpense);
                 return newExpense;
             }
         }
@@ -70,7 +96,7 @@ const budgetApp = (()=>{
                 date: $('.ba__top__header_date')
             },
             display: {
-                total: $('.ba__top__display__total_text'),
+                total: $('.ba__top__total_text'),
                 income : {
                     total: $('.ba__top__summary__income__text_value'),
                     percentage: $('.ba__top__summary__income__text_percentage')
@@ -102,12 +128,19 @@ const budgetApp = (()=>{
         const templates = {
             item: (item) => {
                 return `
-                    <div class="list__item list__item--${item.type}">
-                        <div class="col col--description">${item.description}</div>
-                        <div class="col flex">
-                            <div class="col col--amount flex flex-jce">${item.amount}</div>
-                            <div class="col col--percentage flex flex-jce">
+                    <div class="list__item list__item--${item.type} col flex" id="${item.type}-${item.id}">
+                        <!--  info  -->
+                        <div class="col col--info flex">
+                            <div class="col col--description flex flex-aic">${item.description}</div>
+                            <div class="col col--amount flex flex-jce flex-aic">${item.prefix}${utils.formatNumber(item.amount)}</div>
+                            <div class="col col--percentage flex flex-jce flex-aic">
                                 <div>${item.getPercentageOfIncome()}%</div>
+                            </div>
+                        </div>
+                        <!--  actions  -->
+                        <div class="col col--actions flex flex-jcc flex-aic">
+                            <div class="action action--delete">
+                                <button class="btn btn--delete">x</button>
                             </div>
                         </div>
                     </div>
@@ -118,8 +151,16 @@ const budgetApp = (()=>{
         function addItem(item) {
             elements.lists[item.type].insertAdjacentHTML('afterbegin', templates.item(item));
         }
+
+        function updateTotals(modelTotals) {
+            elements.display.income.total.textContent = `+${utils.formatNumber(modelTotals.income())}`;
+            elements.display.expense.total.textContent = utils.formatNumber(modelTotals.expense());
+            elements.display.total.textContent = `${modelTotals.total() > 0 ? '+' : ''}${utils.formatNumber( modelTotals.total() )}`;
+        }
+
         return {
             addItem,
+            updateTotals,
             elements
         }
     })();
@@ -136,7 +177,7 @@ const budgetApp = (()=>{
             for (let i = 0; i < 50; i++) {
                 view.elements.form.type.value = Math.random() > 0.5 ? 'income' : 'expense';
                 view.elements.form.description.value = 'test tester';
-                view.elements.form.amount.value = (Math.random() * 200).toFixed(2);
+                view.elements.form.amount.value = (Math.random() * 2000).toFixed(2);
                 view.elements.form.submit.click();
             }
             // init tabs
@@ -153,6 +194,8 @@ const budgetApp = (()=>{
             });
             // add to view
             view.addItem(item);
+            // update totals
+            view.updateTotals(model.data.totals);
         }
 
         function onTabClick(e) {
