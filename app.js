@@ -229,7 +229,7 @@ const budgetApp = (()=>{
 
         function onListClick(e) {
             const itemEl = e.target.closest('.list__item');
-            if(!itemEl) return;
+            if(!itemEl || !e.target.classList.contains('btn--delete')) return;
             const [type, id] = itemEl.id.split('-');
             model.removeItem(type, id);
             view.removeItem(type, id);
