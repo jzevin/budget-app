@@ -133,7 +133,7 @@ const budgetApp = (()=>{
         const templates = {
             item: (item) => {
                 return `
-                    <div class="list__item list__item--${item.type} col flex" id="${item.type}-${item.id}">
+                    <div class="list__item list__item--${item.type} col flex" id="${item.type}-${item.id}" onclick="">
                         <!--  info  -->
                         <div class="col col--info flex">
                             <div class="col col--description flex flex-aic">${item.description}</div>
