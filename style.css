@@ -144,22 +144,30 @@ body, html {
 .list__item {
     padding: 0.75em;
     overflow: hidden;
+    cursor: pointer;
 }
 .list__item .col--actions {
     flex: 0 0 0;
-    transition: 250ms;
+    transition: 150ms;
 }
 .list__item .col--actions .action {
-    visibility: hidden;
+    /* visibility: hidden;
+    width: 0; */
     width: 0;
+    opacity: 0;
+    transform: translateX(+30px);
+    transition: 150ms;
 }
 .list__item:hover .col--actions {
     flex: 0 0 12.5%;
     min-width: 3em;
 }
 .list__item:hover .col--actions .action {
-    visibility: visible;
-    width: 1em;
+    /* visibility: visible;
+    width: 1em; */
+    width: auto;
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .ba__bottom--income .list--expense {

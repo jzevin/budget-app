@@ -83,8 +83,13 @@ const budgetApp = (()=>{
             }
         }
 
+        function removeItem(type, id) {
+            data.items[type] = data.items[type].filter(item=>item.id!==+id);
+        }
+
         return {
             addItem,
+            removeItem,
             data
         }
     })();
@@ -153,13 +158,20 @@ const budgetApp = (()=>{
         }
 
         function updateTotals(modelTotals) {
-            elements.display.income.total.textContent = `+${utils.formatNumber(modelTotals.income())}`;
+            elements.display.income.total.textContent = `${modelTotals.income() > 0 ? '+' : ''}${utils.formatNumber(modelTotals.income())}`;
             elements.display.expense.total.textContent = utils.formatNumber(modelTotals.expense());
             elements.display.total.textContent = `${modelTotals.total() > 0 ? '+' : ''}${utils.formatNumber( modelTotals.total() )}`;
         }
 
+        function removeItem(type, id) {
+            const list = elements.lists[type];
+            const el = list.querySelector(`#${type}-${id}`);
+            list.removeChild(el);
+        }
+
         return {
             addItem,
+            removeItem,
             updateTotals,
             elements
         }
@@ -173,8 +185,9 @@ const budgetApp = (()=>{
             view.elements.tabs.income.addEventListener('click', onTabClick);
             view.elements.tabs.expense.addEventListener('click', onTabClick);
             view.elements.tabs.both.addEventListener('click', onTabClick);
+            view.elements.bottom.addEventListener('click', onListClick);
             // remove after dev
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 10; i++) {
                 view.elements.form.type.value = Math.random() > 0.5 ? 'income' : 'expense';
                 view.elements.form.description.value = 'test tester';
                 view.elements.form.amount.value = (Math.random() * 2000).toFixed(2);
@@ -212,6 +225,16 @@ const budgetApp = (()=>{
                 view.elements.bottom.classList.remove(`ba__bottom--${key}`);
             }
             view.elements.bottom.classList.add(`ba__bottom--${type}`);
+        }
+
+        function onListClick(e) {
+            const itemEl = e.target.closest('.list__item');
+            if(!itemEl) return;
+            const [type, id] = itemEl.id.split('-');
+            model.removeItem(type, id);
+            view.removeItem(type, id);
+            // update totals
+            view.updateTotals(model.data.totals);
         }
     
         return {
