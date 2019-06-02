@@ -153,20 +153,24 @@ body, html {
 .ba__top__form {
     flex: 0 0 90px;
 }
+.ba__top__form input {
+    border-radius: 0;
+    border: 1px solid var(--main);
+}
 .ba__top__form_wrap {
     height: 50px;
-    max-width: 520px;
+    /* max-width: 520px; */
 }
 .ba__top__form_type {
-    width: 100%;
+    /* width: 100%; */
 }
 .ba__top__form_description {
-    width: 100%;
-    min-width: 350px;
+    /* width: 100%; */
+    /* min-width: 350px; */
 }
 .ba__top__form_amount {
-    width: 100%;
-    max-width: 75px;
+    /* width: 100%; */
+    /* max-width: 75px; */
 }
 .ba__top__form_submit {
     width: 100%;
@@ -196,7 +200,7 @@ body, html {
 .ba__bottom {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    height: calc(100% - 370px);
+    /* height: calc(100% - 370px); */
     background-color: var(--white-98);
 }
 
