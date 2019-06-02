@@ -285,8 +285,7 @@ body, html {
 
 @media only screen and (max-width: 560px) {
     .ba__top__form_wrap {
-        /* height: 50px;
-        max-width: 325px; */
+        max-width: 90%;
     }
     .ba__top__form_description {
         min-width: 75px;
