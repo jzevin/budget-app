@@ -284,7 +284,7 @@ body, html {
 
 
 @media only screen and (max-width: 560px) {
-    .ba__top__form_wrap {
+    /* .ba__top__form_wrap {
         height: 50px;
         max-width: 325px;
     }
@@ -293,7 +293,7 @@ body, html {
         max-width: 175px;
     }
     .ba__top__form_amount {
-        max-width: 75px;
+        max-width: 75px; */
     }
 
 }
