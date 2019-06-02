@@ -13,6 +13,10 @@ const budgetApp = (()=>{
                     return p += out;
                 },'');
             return `${dollars}.${cents}`;
+        },
+        formatPercentage(num, places=0) {
+            num = Math.abs(num);
+            return num.toFixed(places);
         }
     }
 
@@ -49,7 +53,7 @@ const budgetApp = (()=>{
             let iid = 0;
             return function(type){ return type instanceof Expense ? eid++ : iid++};
         }();
-        Object.prototype.getPercentageOfIncome = function(ttlIncome=0) {
+        Object.prototype.getPercentageOf = function(ttlIncome=0) {
             if(this.amount === 0 || ttlIncome === 0) {
                 return 0;
             } else {
@@ -138,9 +142,7 @@ const budgetApp = (()=>{
                         <div class="col col--info flex">
                             <div class="col col--description flex flex-aic">${item.description}</div>
                             <div class="col col--amount flex flex-jce flex-aic">${item.prefix}${utils.formatNumber(item.amount)}</div>
-                            <div class="col col--percentage flex flex-jce flex-aic">
-                                <div>${item.getPercentageOfIncome()}%</div>
-                            </div>
+                            <div class="col col--percentage flex flex-jce flex-aic">${item.getPercentageOf()}%</div>
                         </div>
                         <!--  actions  -->
                         <div class="col col--actions flex flex-jcc flex-aic">
@@ -169,10 +171,21 @@ const budgetApp = (()=>{
             list.removeChild(el);
         }
 
+        function updateAllPercentages(items, totals) {
+            function updatePercentage(item, ttl) {
+                const elId = `${item.type}-${item.id}`;
+                const el = elements.lists[item.type].querySelector(`#${elId}`);
+                el.querySelector('.col--percentage').textContent = `${utils.formatPercentage(item.getPercentageOf(ttl))}%`;
+            }
+            items.income.forEach(item=>updatePercentage(item, totals.income()));
+            items.expense.forEach(item=>updatePercentage(item, totals.expense()));
+        }
+
         return {
             addItem,
             removeItem,
             updateTotals,
+            updateAllPercentages,
             elements
         }
     })();
@@ -209,6 +222,11 @@ const budgetApp = (()=>{
             view.addItem(item);
             // update totals
             view.updateTotals(model.data.totals);
+            // update percentages
+            view.updateAllPercentages(
+                model.data.items,
+                model.data.totals
+            );
         }
 
         function onTabClick(e) {
@@ -235,6 +253,11 @@ const budgetApp = (()=>{
             view.removeItem(type, id);
             // update totals
             view.updateTotals(model.data.totals);
+            // update percentages
+            view.updateAllPercentages(
+                model.data.items,
+                model.data.totals
+            );
         }
     
         return {
