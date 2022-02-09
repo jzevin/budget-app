@@ -6,4 +6,4 @@ Budget app written in **vanilla JavaScript** using the **Module Pattern**.
  - Module Pattern
  - Responsive
 
-### Check out the [demo](https://phillydesignr.github.io/budget-app/)
+### Check out the [demo](https://jzevin.github.io/budget-app/)
